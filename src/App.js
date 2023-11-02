@@ -1,10 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
-import ItemsList from './ItemsList';
+import ItemCards from './ItemsCards';
 
 function App() {
   return (
-   <ItemsList/>
+   <ItemCards/>
   );
 }
 
