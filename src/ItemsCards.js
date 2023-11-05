@@ -19,15 +19,22 @@ const ItemCards = () => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost/omeka-s/api/items')
-      .then(response => response.json())
-      .then(data => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost/omeka-s/api/items');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
         setItems(data);
-      })
-      .catch(error => {
+      } catch (error) {
         console.error('Error fetching items:', error);
-      });
+      }
+    };
+  
+    fetchData();
   }, []);
+  
 
   return (
     <div className="card-container">
