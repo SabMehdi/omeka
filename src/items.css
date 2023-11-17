@@ -1,4 +1,4 @@
-.card {
+.mycard {
   display: flex;
   align-items: center;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -6,26 +6,26 @@
   margin: 40px; 
 }
 
-.card-image {
+.mycard-image {
   flex: 0 0 auto;
   width: 150px; 
 }
 
-.card-image img {
+.mycard-image img {
   width: 100%; 
   height: auto; 
 }
 
-.card-content {
+.mycard-content {
   padding: 16px;
   flex: 1;
 }
-.title {
+.mytitle {
   font-size: 1.1em;
   margin-bottom: 15px;
 }
 
-.description {
+.mydescription {
   font-size: 0.9em;
   color: #555;
 }

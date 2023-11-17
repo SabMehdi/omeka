@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import './items.css'
 
 const Card = ({ title, imageUrl, description }) => (
-  <div className="card">
-    <div className="card-image">
+  <div className="mycard">
+    <div className="mycard-image">
       <img src={imageUrl} alt={title} />
     </div>
-    <div className="card-content">
-      <h4 className="title">{title}</h4>
-      <p className="description">{description}</p>
+    <div className="mycard-content">
+      <h4 className="mytitle">{title}</h4>
+      <p className="mydescription">{description}</p>
     </div>
   </div>
 );
