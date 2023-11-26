@@ -39,7 +39,7 @@ const Login = () => {
 
     return (
         <div>
-            <h2>Login to Fetch Users</h2>
+            <h2>Login</h2>
             <form onSubmit={handleLogin}>
                 <input 
                     type="text" 
@@ -58,7 +58,6 @@ const Login = () => {
                 </button>
             </form>
             {error && <p style={{ color: 'red' }}>{error}</p>}      
-              {/* Display users if needed */}
               <ul>
               {users.map(user => (
                 <li key={user['o:id']}>{user['o:name']}</li>
