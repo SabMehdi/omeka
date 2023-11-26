@@ -1,3 +1,4 @@
+import { NavLink } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -14,6 +15,7 @@ function BasicExample() {
             <Nav.Link href="/">Items</Nav.Link>
             <Nav.Link href="/user">User</Nav.Link>
             <Nav.Link href="/resource">Resource Templates</Nav.Link>
+            <NavLink href="/login">Login</NavLink>
           </Nav>
         </Navbar.Collapse>
       </Container>

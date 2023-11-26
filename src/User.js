@@ -9,8 +9,8 @@ const User = () => {
             try {
                 const response = await axios.get('http://localhost/omeka-s/api/users', {
                     params: {
-                        key_identity: 'Y2Awg7kZWyv8VSBonnTP6wkzPRPM46yQ',
-                        key_credential: 'YXAFwaHRpFksWGF7Fqsr1WtwLVsVO9BC'
+                        key_identity :'DO5PuNIDlF7ge3dQfk6M4PnnduUHzfPV',
+                        key_credential :'l0klRKNKbbMPjSv9bTRLIygzfHgMc7uD'
                     }
                 });
                 setUsers(response.data);

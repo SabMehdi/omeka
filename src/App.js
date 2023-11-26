@@ -6,15 +6,17 @@ import BasicExample from './Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import User from './User';
 import ResourceTemplates from './ResourceTemplates';
+import Login from './Login';
 
 function App() {
   return (
     <BrowserRouter>
       <BasicExample />
       <Routes>
-        <Route path='/resource' Component={ResourceTemplates} />
-        <Route path='/' Component={ItemCards} />
-        <Route path='/user' Component={User} />
+        <Route path='/resource' element={<ResourceTemplates />} />
+        <Route path='/' element={<ItemCards />} />
+        <Route path='/user' element={<User />} />
+        <Route path='/login' element={<Login />} />
       </Routes>
     </BrowserRouter>
   );
