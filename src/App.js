@@ -7,9 +7,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import User from './User';
 import ResourceTemplates from './ResourceTemplates';
 import Login from './Login';
+import { UserProvider } from './UserContext';
 
 function App() {
   return (
+    <UserProvider>
     <BrowserRouter>
       <BasicExample />
       <Routes>
@@ -19,6 +21,7 @@ function App() {
         <Route path='/login' element={<Login />} />
       </Routes>
     </BrowserRouter>
+    </UserProvider>
   );
 }
 

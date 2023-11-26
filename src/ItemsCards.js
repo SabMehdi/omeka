@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './items.css'
-
+import { useUser } from './UserContext';
 const Card = ({ title, imageUrl, description }) => (
   <div className="mycard">
     <div className="mycard-image">
@@ -17,11 +17,17 @@ const Card = ({ title, imageUrl, description }) => (
 
 const ItemCards = () => {
   const [items, setItems] = useState([]);
+  const { credentials } = useUser();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost/omeka-s/api/items');
+        const response = await fetch('/api/items', {
+          params: {
+            key_identity :credentials.key_identity,
+            key_credential :credentials.key_credential
+          }
+      });
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }

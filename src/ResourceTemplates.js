@@ -1,32 +1,55 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import { useUser } from './UserContext'; 
 const ResourceTemplates = () => {
   const [templates, setTemplates] = useState([]);
+  const { credentials } = useUser();
 
   useEffect(() => {
-    axios.get('http://localhost/omeka-s/api/resource_templates')
+    axios.get('/api/resource_templates', {
+      params: {
+        key_identity :credentials.key_identity,
+        key_credential :credentials.key_credential
+      }
+  })
       .then(response => setTemplates(response.data))
       .catch(error => console.error('Error fetching templates:', error));
   }, []);
 
   const createRandomItem = (template) => {
     let randomItemData = {
-      'o:resource_template': {'o:id': template['o:id']},
-      'dcterms:title': [{'@value': `Random Title ${Date.now()}`}], // Using the current timestamp to ensure uniqueness
-      'dcterms:description': [{'@value': `Random Description ${Math.random()}`}], // Random description
+        'o:resource_template': {'o:id': template['o:id'] || null},
+        'o:is_public': true,
+        'o:title': `item`, 
+        'dcterms:title': [
+            {
+                'type': 'literal',
+                'property_id': 1,
+                'property_label': 'title',
+                'is_public': true,
+                '@value': `title`
+            }
+        ],
+        'dcterms:description': [
+            {
+                'type': 'literal',
+                'property_id': 4, 
+                'property_label': 'Description',
+                'is_public': true,
+                '@value': `description`
+            }
+        ]
     };
 
-    // Adding properties from the template
     template['o:resource_template_property'].forEach(prop => {
-      randomItemData[`dcterms:${prop['o:property']['o:id']}`] = [{'@value': `Random Value ${Math.random()}`}];
+        randomItemData[`dcterms:${prop['o:property']['o:id']}`] = [{'@value': `Random Value ${Math.random()}`}];
     });
 
-    axios.post('http://localhost/omeka-s/api/items', randomItemData, {
-        params: {
-            key_identity: 'etsmWkWDhdz1BlW42oka8WkHDc0UFVeH',
-            key_credential: 'vgvr6gk3INm4iqQhjsdB9bi0Hp4UBw4J'
-        }
+    axios.post('/api/items', randomItemData, {
+      params: {
+        key_identity :credentials.key_identity,
+        key_credential :credentials.key_credential
+    }
     })
     .then(response => console.log('Item created:', response.data))
     .catch(error => console.error('Error creating item:', error));
