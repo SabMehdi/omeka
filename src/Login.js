@@ -16,7 +16,7 @@ const Login = () => {
         setError('');
 
         try {
-            const response = await axios.get('/api/users', {
+            const response = await axios.get('http://localhost/omeka-s/api/users', {
                 params: {
                   key_identity: keyIdentity,
                   key_credential: keyCredential
@@ -26,7 +26,7 @@ const Login = () => {
             setUsers(response.data); 
             updateCredentials({ key_identity: keyIdentity, key_credential: keyCredential });
 
-            navigate('/resource');
+            navigate('/build/resource');
 
             
         } catch (error) {

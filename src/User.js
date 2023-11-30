@@ -8,7 +8,7 @@ const User = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('/api/users', {
+                const response = await axios.get('http://localhost/omeka-s/api/users', {
                     params: {
                       key_identity :credentials.key_identity,
                       key_credential :credentials.key_credential

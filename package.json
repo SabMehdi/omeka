@@ -1,4 +1,5 @@
 {
+  "homepage": "http://localhost/build",
   "name": "omeka",
   "version": "0.1.0",
   "private": true,

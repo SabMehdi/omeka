@@ -6,7 +6,7 @@ const ResourceTemplates = () => {
   const { credentials } = useUser();
 
   useEffect(() => {
-    axios.get('/api/resource_templates', {
+    axios.get('http://localhost/omeka-s/api/resource_templates', {
       params: {
         key_identity :credentials.key_identity,
         key_credential :credentials.key_credential
@@ -45,7 +45,7 @@ const ResourceTemplates = () => {
         randomItemData[`dcterms:${prop['o:property']['o:id']}`] = [{'@value': `Random Value ${Math.random()}`}];
     });
 
-    axios.post('/api/items', randomItemData, {
+    axios.post('http://localhost/omeka-s/api/items', randomItemData, {
       params: {
         key_identity :credentials.key_identity,
         key_credential :credentials.key_credential

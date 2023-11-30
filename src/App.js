@@ -12,7 +12,7 @@ import { UserProvider } from './UserContext';
 function App() {
   return (
     <UserProvider>
-    <BrowserRouter>
+    <BrowserRouter basename='/build'>
       <BasicExample />
       <Routes>
         <Route path='/resource' element={<ResourceTemplates />} />
